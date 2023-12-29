@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors')
-const routerApi = require('./app')
-const {logErrors, errorHandler, boomErrorHandler} = require('./app/middlewares/errorHandler');
+const routerApi = require('./products/routes')
+const {logErrors, errorHandler, boomErrorHandler} = require('./middlewares/errorHandler');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -20,11 +20,11 @@ const options = {
 app.use(cors(options));
 //Los endpoints especificos deben declararsen antes de los endpoints dinamicos.
 
-app.get("/", (req, res) =>{
+app.get("/api", (req, res) =>{
   res.send("Hola mi server en Express");
 });
 
-app.get('/nueva-ruta', (req, res) => {
+app.get('/api/nueva-ruta', (req, res) => {
   res.send('Hola, soy una nueva ruta');
 });
 
